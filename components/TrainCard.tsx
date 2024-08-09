@@ -32,7 +32,7 @@ const TrainCard = ({ train, isExpanded, onToggleExpand }: any) => {
         <div className="card">
             <div className="card-header">
                 <div className="bg-[var(--p-bg)] border-2 shadow-lg flex justify-between items-center rounded-lg m-5">
-                    <h2 className="text-[var(--sec-bg)] text-xl md:text-2xl font-semibold tracking-wider p-3 m-5 text-nowrap">{train.name}</h2>
+                    <h2 className="text-[var(--sec-bg)] text-lg md:text-2xl font-semibold tracking-wider p-3 m-5 text-nowrap">{train.name}</h2>
                     <button className="text-xl text-[var(--sec-bg)] p-3 m-5" onClick={onToggleExpand}>
                         {isExpanded ? '▲' : '▼'}
                     </button>
@@ -65,7 +65,7 @@ const TrainCard = ({ train, isExpanded, onToggleExpand }: any) => {
                         path && (
                             <div className="flex flex-col justify-center items-center">
                                 <Button
-                                    className={`${dflag === 0 ? 'bg-red-500' : 'bg-green-500'} text-lg p-4 m-5`}
+                                    className={`${dflag === 0 ? 'bg-red-500' : 'bg-blue-500'} text-lg p-4 m-5`}
                                     onClick={() => { 
                                         setDflag(dflag === 0 ? 1 : 0) 
                                     }

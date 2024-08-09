@@ -62,8 +62,6 @@ export default function NavBar({signin,div}:any) {
         
                     const data = await response.json();
 
-                    console.log(data);
-
                     if (data?.id)
                     {
                         setIsSignedIn(true)
@@ -120,13 +118,19 @@ export default function NavBar({signin,div}:any) {
                 </div>
                 <div
                     className={`hidden pt-2 pb-2 md:flex justify-center items-center mx-4 cursor-pointer ${activeDiv === 'routeDetails' ? 'border-b-4 border-[var(--sec-bg)]' : ''}`}
-                    onClick={() => handleDivClick('routeDetails')}>
+                    onClick={() => {
+                        handleDivClick('routeDetails');
+                        CheckAndDirect("/station_details");
+                    }}>
                     <FaRoute className="text-slate-700 w-[2rem] h-[2rem] md:w-[3rem] md:h-[3rem]" />
-                    <p className="cursor-pointer text-md md:text-xl p-2 text-slate-700 font-semibold">Route Details</p>
+                    <p className="cursor-pointer text-md md:text-xl p-2 text-slate-700 font-semibold">Station Details</p>
                 </div>
                 <div
                     className={`hidden pt-2 pb-2 md:flex justify-center items-center mx-4 cursor-pointer ${activeDiv === 'bookTicket' ? 'border-b-4 border-[var(--sec-bg)]' : ''}`}
-                    onClick={() => handleDivClick('bookTicket')}>
+                    onClick={() => {
+                        handleDivClick('bookTicket');
+                        CheckAndDirect("/book_tickets");
+                    }}>
                     <IoTicketSharp className="text-slate-700 w-[2rem] h-[2rem] md:w-[3rem] md:h-[3rem]" />
                     <p className="cursor-pointer text-md md:text-xl p-2 text-slate-700 font-semibold">Book a ticket</p>
                 </div>
@@ -186,13 +190,19 @@ export default function NavBar({signin,div}:any) {
                         </div>
                         <div
                             className={`p-3 inline-flex justify-center items-center  cursor-pointer ${activeDiv === 'routeDetails' ? 'border-b-4 border-[var(--sec-bg)]' : ''}`}
-                            onClick={() => handleDivClick('routeDetails')}>
+                            onClick={() => {
+                                handleDivClick('routeDetails');
+                                CheckAndDirect("/station_details");
+                            }}>
                             <FaRoute className="text-slate-700 w-[2rem] h-[2rem]" />
-                            <p className="cursor-pointer text-md p-2 text-slate-700 font-semibold">Route Details</p>
+                            <p className="cursor-pointer text-md p-2 text-slate-700 font-semibold">Station Details</p>
                         </div>
                         <div
                             className={`p-3 inline-flex justify-center items-center  cursor-pointer ${activeDiv === 'bookTicket' ? 'border-b-4 border-[var(--sec-bg)]' : ''}`}
-                            onClick={() => handleDivClick('bookTicket')}>
+                            onClick={() => {
+                                handleDivClick('bookTicket');
+                                CheckAndDirect("/book_tickets");
+                            }}>
                             <IoTicketSharp className="text-slate-700 w-[2rem] h-[2rem]" />
                             <p className="cursor-pointer text-md p-2 text-slate-700 font-semibold">Book a ticket</p>
                         </div>

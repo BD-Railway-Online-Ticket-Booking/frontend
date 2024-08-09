@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+"use client"
 import NavBar from "@/components/NavBar";
 import SignIn from "@/components/SignIn";
 
