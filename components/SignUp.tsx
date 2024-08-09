@@ -19,6 +19,9 @@ export default function SignUp()
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [img_data, setImgData] = useState("");
+    const [nid, setNid] = useState("");
+    const[location, setLocation] = useState("");
+    const[phone, setPhone] = useState("");
     const [pic, setPic] = useState<boolean>(false);
 
     const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,6 +47,9 @@ export default function SignUp()
             email: email,
             password: password,
             role: "USER",
+            nid: nid,
+            location: location,
+            phone: phone,
             img_data: img_data
             
         }
@@ -79,15 +85,19 @@ export default function SignUp()
 
 
     return (
-        <div className="w-full h-screen flex flex-col justify-center items-center bg-[var(--p-bg)]">
-            <p className="text-xl font-semibold text-nowrap text-[var(--sec-bg)] mb-10">
+        <div className="w-full h-full flex flex-col justify-center items-center bg-[var(--p-bg)]">
+            <p className="text-xl font-semibold text-nowrap text-[var(--sec-bg)] mt-4 mb-10">
                 BD Railway Online Ticket Booking
             </p>
-            <div className="w-[80%] h-[80%] bg-[var(--sec-bg)] flex flex-col justify-center items-center rounded-2xl shadow-lg ">
-                <p className="text-white text-2xl font-bold">Sign Up</p>
-                <input type="text" placeholder="Name" className="w-4/6 p-2 my-4 border-2 border-gray-500 rounded-lg" onChange={e => setName(e.target.value)} />
-                <input type="email" placeholder="Email" className="w-4/6 p-2 my-4 border-2 border-gray-500 rounded-lg" onChange={e => setEmail(e.target.value)} />
-                <input type="password" placeholder="Password" className="w-4/6 p-2 my-4 border-2 border-gray-500 rounded-lg" onChange={e => setPassword(e.target.value)} />
+            <div className="w-[90%] md:w-[80%] h-auto bg-[var(--sec-bg)] flex flex-col justify-center items-center rounded-2xl shadow-lg ">
+                <p className="text-white text-2xl font-bold p-3">Sign Up</p>
+                <input type="text" placeholder="Name" className="w-[80%] md:w-4/6 p-2 my-4 border-2 border-gray-500 rounded-lg" onChange={e => setName(e.target.value)} />
+                <input type="email" placeholder="Email" className="w-[80%] md:w-4/6 p-2 my-4 border-2 border-gray-500 rounded-lg" onChange={e => setEmail(e.target.value)} />
+                <input type="password" placeholder="Password" className="w-[80%] md:w-4/6 p-2 my-4 border-2 border-gray-500 rounded-lg" onChange={e => setPassword(e.target.value)} />
+                <input type="text" placeholder="NID No." className="w-[80%] md:w-4/6 p-2 my-4 border-2 border-gray-500 rounded-lg" onChange={e => setNid(e.target.value)} />
+                <input type="text" placeholder="Location" className="w-[80%] md:w-4/6 p-2 my-4 border-2 border-gray-500 rounded-lg" onChange={e => setLocation(e.target.value)} />
+                <input type="text" placeholder="Phone No." className="w-[80%] md:w-4/6 p-2 my-4 border-2 border-gray-500 rounded-lg" onChange={e => setPhone(e.target.value)} />
+
                 <p className="text-white text-md p-1">
                     {pic ? "Profile Picture Selected" : "Select Profile Picture"}  
                 </p>

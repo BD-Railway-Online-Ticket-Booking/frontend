@@ -57,7 +57,11 @@ export default function SignIn() {
                 <input type="password" placeholder="Password" className="w-full md:w-4/6 p-2 my-4 border-2 border-gray-500 rounded-md" onChange={e =>setPassword(e.target.value)}/>
                 <div className="flex justify-between items-center w-full md:w-4/6">
                     <Button className="w-auto bg-[var(--sec-bg)] text-lg xl:text-xl text-white mb-10" onClick={signinHandler}>Sign In</Button>
-                    <Button className="w-auto bg-red-800 text-sm xl:text-lg text-white p-4 mb-10">Forget Password?</Button>
+                    <Button className="w-auto bg-red-800 text-sm xl:text-lg text-white p-4 mb-10" onClick={()=>
+                        {
+                            router.push("/forget_password")
+                        }
+                    }>Forget Password?</Button>
                 </div>
                 <div className="md:hidden flex flex-col justify-center items-center ">
                     <p className="text-xs md:text-sm text-[var(--sec-bg)] text-nowrap my-3">Don't have an account?</p>
