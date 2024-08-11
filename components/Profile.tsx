@@ -46,8 +46,6 @@ export default function Profile() {
         
                     const data = await response.json();
 
-                    console.log(data);
-
                     if (data?.id)
                     {
                         setName(data.name);

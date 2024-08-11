@@ -8,7 +8,7 @@ export default function page() {
 
     return(
         <div className="sticky min-h-screen flex flex-col">
-             <NavBar signin={false} div={""}/>
+             <NavBar signin={false} div={"bookTicket"}/>
              <TicketBooking/>
              <Footer/>
         </div>

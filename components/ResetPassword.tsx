@@ -2,14 +2,16 @@
 import { useState } from "react";
 import { MdOutlineLockReset } from "react-icons/md";
 import { Button } from "./ui/button";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, useSearchParams,  } from "next/navigation";
 import { useToast} from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
 export default function ResetPassword() {
     
     const router = useRouter();
-    const pathName = usePathname();
-    const email = pathName.split("/").pop();
+    const searchParams = useSearchParams();
+    const email = searchParams.get("email");
+    
+    
     const {toast} = useToast();
 
     const [password, setPassword] = useState("");

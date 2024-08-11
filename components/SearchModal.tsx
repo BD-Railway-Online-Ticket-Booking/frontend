@@ -38,7 +38,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-end">
-            <div className="bg-white w-full h-3/4 rounded-t-lg p-4">
+            <div className="bg-white w-full h-full rounded-t-lg p-4">
                 <div className="flex justify-end">
                     <Button onClick={onClose} className="text-lg p-4 m-4 bg-red-800">Close</Button>
                 </div>

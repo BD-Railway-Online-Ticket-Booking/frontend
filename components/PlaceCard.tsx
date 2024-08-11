@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-
+import FormatTime from '@/utility/FormatTime';
 const PlaceCard = ({ place, isExpanded, onToggleExpand }: any) => {
 
     const [trains, setTrains] = useState([]);
@@ -25,24 +25,6 @@ const PlaceCard = ({ place, isExpanded, onToggleExpand }: any) => {
             getTrains();
         }
     }, [isExpanded]);
-
-    const formatTime = (timeString: string) => {
-        let [hours, minutes] = timeString.split(':');
-        let period = 'AM';
-    
-        let hourNumber = parseInt(hours, 10);
-        if (hourNumber >= 12) {
-            period = 'PM';
-            if (hourNumber > 12) {
-                hourNumber -= 12;
-            }
-        } else if (hourNumber === 0) {
-            hourNumber = 12;
-        }
-    
-        return `${hourNumber.toString().padStart(2, '0')}:${minutes} ${period}`;
-    };
-
 
 
     return (
@@ -69,20 +51,18 @@ const PlaceCard = ({ place, isExpanded, onToggleExpand }: any) => {
                                 <div className="w-full flex justify-between items-center">
                                     <div className="flex flex-col justify-center items-center m-3">
                                         <h1 className='text-blue-500 text-sm md:text-lg font-semibold  m-1'>Incoming</h1>
-                                        <h1 className='text-slate-500 text-sm md:text-md font-semibold  m-1'>Arrival Time: {formatTime(train.incoming_arrival)}</h1>
-                                        <h1 className='text-slate-500 text-sm md:text-md font-semibold  m-1'>Departure Time: {formatTime(train.incoming_departure)}</h1>
+                                        <h1 className='text-slate-500 text-sm md:text-md font-semibold  m-1'>Arrival Time: {FormatTime(train.incoming_arrival)}</h1>
+                                        <h1 className='text-slate-500 text-sm md:text-md font-semibold  m-1'>Departure Time: {FormatTime(train.incoming_departure)}</h1>
                                     </div>
                                     <div className="flex flex-col justify-center items-center m-3">
                                         <h1 className='text-red-500 text-sm md:text-lg font-semibold  m-1'>Outgoing</h1>
-                                        <h1 className='text-slate-500 text-sm md:text-md font-semibold  m-1'>Arrival Time: {formatTime(train.outgoing_arrival)}</h1>
-                                        <h1 className='text-slate-500 text-sm md:text-md font-semibold  m-1'>Departure Time: {formatTime(train.outgoing_departure)}</h1>
+                                        <h1 className='text-slate-500 text-sm md:text-md font-semibold  m-1'>Arrival Time: {FormatTime(train.outgoing_arrival)}</h1>
+                                        <h1 className='text-slate-500 text-sm md:text-md font-semibold  m-1'>Departure Time: {FormatTime(train.outgoing_departure)}</h1>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
-
-
                 </div>
 
             )}

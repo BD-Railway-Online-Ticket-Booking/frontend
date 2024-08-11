@@ -4,6 +4,7 @@ import { DatePicker } from "./ui/DatePicker";
 import { useRouter } from "next/navigation";
 import SearchModal from './SearchModal';
 import { Button } from "./ui/button";
+import FormatDate from "@/utility/FormatDate";
 
 export default function TicketBooking() {
     const router = useRouter();
@@ -65,6 +66,14 @@ export default function TicketBooking() {
         }
     };
 
+    function searchTrainHandler(){
+        let from_id = places.find(place => place.name === from)?.id;
+        let to_id = places.find(place => place.name === to)?.id;
+        let dateFormat = FormatDate(date);
+
+        router.push(`/book_tickets/search_trains?from=${from_id}&fromStation=${from}&to=${to_id}&toStation=${to}&date=${dateFormat}`);
+    }
+
     return (
         <div className="w-full min-h-screen flex flex-col justify-start items-center">
             <h1 className="text-xl md:text-3xl font-bold text-[var(--sec-bg)] mt-5 mb-6">Ticket Booking</h1>
@@ -94,7 +103,7 @@ export default function TicketBooking() {
                     className="border-gray-300 text-xl rounded-lg"
                 />
             </div>
-            <Button className="bg-blue-800 text-xl xl:text-2xl text-white my-7 p-6">
+            <Button className="bg-blue-800 text-xl xl:text-2xl text-white my-7 p-6" onClick={searchTrainHandler}>
             Search Trains
             </Button>
             <SearchModal

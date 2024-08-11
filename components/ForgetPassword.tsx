@@ -87,7 +87,7 @@ export default function ForgetPassword() {
                     title: "Code Confirmed",
                     description: "Code has been confirmed successfully"
                 })
-                router.push(`/reset_password/${email}`);
+                router.push(`/reset_password?email=${email}`);
             }
             else {
                 toast({

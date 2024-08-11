@@ -93,7 +93,8 @@ export default function NavBar({signin,div}:any) {
     {
         localStorage.removeItem("token");
         localStorage.removeItem("id");
-        localStorage.removeItem("role");
+        localStorage.removeItem("email");
+        localStorage.removeItem("name");
         setIsSignedIn(false);
         router.push("/");
     }
