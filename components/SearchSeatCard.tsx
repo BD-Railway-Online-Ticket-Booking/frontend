@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from './ui/dialog';
 import { Button } from './ui/button';
-import { GenerateTicketPDF } from '@/utility/GenerateTicketPDF';
+import  GenerateTicketPDF  from '@/utility/GenerateTicketPDF';
 import { useSearchParams } from 'next/navigation';
+import { PiSeatFill } from "react-icons/pi";
 import FormatTime from '@/utility/FormatTime';
 
 export default function SearchSeatCard({ seat, date, path,dflag}: any) {
@@ -59,7 +60,7 @@ export default function SearchSeatCard({ seat, date, path,dflag}: any) {
 
         GenerateTicketPDF(user,train_name,from,to,seat_name,seat_numbers,date,departure,reach,price);
 
-        // window.location.reload();
+        window.location.reload();
     }
 
     return (
@@ -70,7 +71,10 @@ export default function SearchSeatCard({ seat, date, path,dflag}: any) {
             >
                 {seat && (
                     <>
+                        <div className="flex justify-center items-center">
+                        <PiSeatFill className="text-slate-500 w-[5] h-[5]" />
                         <h1 className="text-slate-500 text-md md:text-xl font-semibold tracking-wider p-2 my-2">{seat.type}</h1>
+                        </div>
                         <h1 className="text-slate-800 text-sm md:text-lg font-semibold tracking-wider p-1 my-1">Price: {seat.price} Tk</h1>
                         <h1 className="text-slate-800 text-sm md:text-lg font-semibold tracking-wider p-1 my-1">Available: {seat.available}</h1>
                     </>
