@@ -4,6 +4,7 @@ import autoTable from 'jspdf-autotable';
 export default function GenerateTicketPDF(user: any, train_name: string, from: any, to: any, seat_name: string, seat_numbers: number[], date: string, departure: any, reach: any, price: number) {
     const generatePDF = async () => {
         const doc = new jsPDF();
+        
 
         // Add green border around the entire page
         const margin = 8;
@@ -52,7 +53,7 @@ export default function GenerateTicketPDF(user: any, train_name: string, from: a
             startY: previousY + 5,
             headStyles: { fillColor: [255, 215, 0] }, // Golden color for header
             body: [
-                [{ content: 'Ticket Details', colSpan: 2, styles: { halign: 'center', fillColor: [0, 200, 83], textColor: [255, 255, 255] } }],
+                [{ content: 'Ticket Details', colSpan: 2, styles: { halign: 'center', fillColor: [0, 200, 83], textColor: [255, 255, 255], fontStyle: "bold",fontSize:11} }],
                 ['Train', train_name],
                 ['Seat Types', seat_name],
                 ['Seat Numbers', seat_numbers.join(', ')],
@@ -86,7 +87,7 @@ export default function GenerateTicketPDF(user: any, train_name: string, from: a
             startY: previousY,
             headStyles: { fillColor: [255, 215, 0] }, // Golden color for header
             body: [
-                [{ content: 'Passenger Details', colSpan: 2, styles: { halign: 'center', fillColor: [0, 200, 83], textColor: [255, 255, 255] } }],
+                [{ content: 'Passenger Details', colSpan: 2, styles: { halign: 'center', fillColor: [0, 200, 83], textColor: [255, 255, 255], fontStyle: "bold",fontSize:11 } }],
                 ['Name', user.name],
                 ['Email', user.email],
                 ['NID No.', user.nid],
@@ -120,8 +121,31 @@ export default function GenerateTicketPDF(user: any, train_name: string, from: a
         doc.setTextColor(255, 215, 0);
         doc.text('bdrailway@gmail.com', doc.internal.pageSize.getWidth() / 2, doc.internal.pageSize.getHeight() -15, { align: 'center' });
 
+        const imgUrl = '/rlogo.png';
+        const imgBase64 = await fetch(imgUrl)
+            .then(response => response.blob())
+            .then(blob => new Promise<string>((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result as string);
+                reader.onerror = reject;
+                reader.readAsDataURL(blob);
+            }));
+
+        const imgWidth = 100; // Adjust the width of the watermark
+        const imgHeight = 137; // Adjust the height of the watermark
+        const x = (doc.internal.pageSize.getWidth() - imgWidth) / 2;
+        const y = (doc.internal.pageSize.getHeight() - imgHeight) / 2;
+
+        // Set global transparency to 0.1
+        doc.setGState(new (doc as any).GState({ opacity: 0.1 }));
+
+        // Add the watermark image
+        doc.addImage(imgBase64, 'PNG', x, y, imgWidth, imgHeight, '', 'FAST');
+
+        // Reset global transparency to 1
+        doc.setGState(new (doc as any).GState({ opacity: 1 }));
+
         doc.save('ticket.pdf');
-        
     };
 
     generatePDF();
