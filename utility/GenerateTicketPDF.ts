@@ -53,7 +53,7 @@ export default function GenerateTicketPDF(user: any, train_name: string, from: a
             startY: previousY + 5,
             headStyles: { fillColor: [255, 215, 0] }, // Golden color for header
             body: [
-                [{ content: 'Ticket Details', colSpan: 2, styles: { halign: 'center', fillColor: [0, 200, 83], textColor: [255, 255, 255], fontStyle: "bold",fontSize:11} }],
+                [{ content: 'Train Details', colSpan: 2, styles: { halign: 'center', fillColor: [0, 200, 83], textColor: [255, 255, 255], fontStyle: "bold",fontSize:11} }],
                 ['Train', train_name],
                 ['Seat Types', seat_name],
                 ['Seat Numbers', seat_numbers.join(', ')],

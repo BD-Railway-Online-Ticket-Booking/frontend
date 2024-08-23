@@ -121,7 +121,7 @@ export default function ForgetPassword() {
                     router.push("/signin");
                 }
                 }>Back</Button>
-                <Button className="w-auto bg-[var(--sec-bg)] text-sm xl:text-lg text-white mb-10" onClick={forgetPasswordHandler}>Reset Password</Button>
+                <Button className="w-auto bg-[var(--sec-bg)] text-sm xl:text-lg text-white mb-10" onClick={forgetPasswordHandler}>Sent Code</Button>
             </div>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
